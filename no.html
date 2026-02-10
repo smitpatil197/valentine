@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Nice Try 😏</title>
+  <title>Hehe 😄</title>
   <style>
     body {
-      display: flex;
       height: 100vh;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial;
-      background: #ffe6ea;
+      background: #fff0f5;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      text-align: center;
     }
-    button {
+
+    h2 {
+      margin-top: 60px;
+      color: #ff4d6d;
+    }
+
+    #noBtn {
       position: absolute;
-      padding: 12px 20px;
+      padding: 14px 26px;
       font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: #ffb3c6;
       cursor: pointer;
+    }
+
+    /* floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-<h2>Are you sure? 😏</h2>
+<h2>Aww… try again 🥹💗</h2>
 <button id="noBtn">NO</button>
 
 <script>
+  // moving NO button
   const btn = document.getElementById("noBtn");
   btn.addEventListener("mouseover", () => {
     btn.style.top = Math.random() * 80 + "vh";
     btn.style.left = Math.random() * 80 + "vw";
   });
+
+  // floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+  }, 500);
 </script>
 
 </body>
